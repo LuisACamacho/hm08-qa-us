@@ -21,3 +21,12 @@ describe('Create an order', () => {
     })
 })
 
+
+describe('Ordering a taxi', () => {
+    it('Setting the address', async () => {
+        await browser.url(`/`)
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
+        //await expect(pnoneNumberModal).toBeExisting();
+    })
+})
+

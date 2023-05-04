@@ -29,6 +29,7 @@ describe('Ordering a taxi', () => {
         const carPickerworkflow = await $(page.carPickerworkflow);
         //Checking if the workflow-subcontainer Form appears if the address is valid 
         await expect(carPickerworkflow).toBeExisting(); 
+        
     })
 
     it('Selecting Supportive plan', async () => {
@@ -36,6 +37,7 @@ describe('Ordering a taxi', () => {
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         const SupportiveButton = await $(page.supportiveButton);
         await SupportiveButton.waitForDisplayed();
+        await browser.pause(10000);
         await SupportiveButton.click();
         await expect(SupportiveButton).toBeExisting(); 
        // await browser.pause(10000);

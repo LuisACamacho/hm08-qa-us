@@ -34,12 +34,13 @@ describe('Ordering a taxi', () => {
 
     it('Selecting Supportive plan', async () => {
         await browser.url(`/`)
+        //await browser.pause(4000);
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         const SupportiveButton = await $(page.supportiveButton);
         await SupportiveButton.waitForDisplayed();
         await SupportiveButton.click();
         await expect(SupportiveButton).toBeExisting(); 
-       // await browser.pause(10000);
+       // await browser.pause(2000);
 
     })
 })

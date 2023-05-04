@@ -24,10 +24,7 @@ module.exports = {
         
     },
     fillAddresses: async function(from, to) {
-        const fromField = await $(this.fromField);
-        await fromField.setValue(from);
-        const toField = await $(this.toField);
-        await toField.setValue(to);
+        await this.fillAddressesOnly(from ,to);
         const callATaxiButton = await $(this.callATaxiButton);
         await callATaxiButton.waitForDisplayed();
         await callATaxiButton.click();

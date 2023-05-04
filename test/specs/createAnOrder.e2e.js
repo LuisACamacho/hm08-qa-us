@@ -30,7 +30,7 @@ describe('Ordering a taxi', () => {
         //Checking if the workflow-subcontainer Form appears if the address is valid 
         await expect(carPickerworkflow).toBeExisting(); 
     })
-    
+
     it('Selecting Supportive plan', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
@@ -38,7 +38,7 @@ describe('Ordering a taxi', () => {
         await SupportiveButton.waitForDisplayed();
         await SupportiveButton.click();
         await expect(SupportiveButton).toBeExisting(); 
-        //await browser.pause(10000);
+       // await browser.pause(10000);
 
     })
 })

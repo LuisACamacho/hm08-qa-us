@@ -48,7 +48,7 @@ module.exports = {
         await browser.setupInterceptor();
         await $(this.nextButton).click();
         // we should wait for response
-        // eslint-disable-next-line wdio/no-pause
+        // eslint-disable-next-line wdio/no-pause 
         await browser.pause(2000);
         const codeField = await $(this.codeField);
         // collect all responses

@@ -29,7 +29,6 @@ describe('Ordering a taxi', () => {
         const carPickerworkflow = await $(page.carPickerworkflow);
         //Checking if the workflow-subcontainer Form appears if the address is valid 
         await expect(carPickerworkflow).toBeExisting(); 
-        await browser.pause(5000);
         
     })
 

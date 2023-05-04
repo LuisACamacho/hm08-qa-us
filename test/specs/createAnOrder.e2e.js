@@ -37,7 +37,7 @@ describe('Ordering a taxi', () => {
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         const SupportiveButton = await $(page.supportiveButton);
         await SupportiveButton.waitForDisplayed();
-        await browser.pause(10000);
+        await browser.pause(5000);
         await SupportiveButton.click();
         await expect(SupportiveButton).toBeExisting(); 
        // await browser.pause(10000);

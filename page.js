@@ -19,7 +19,8 @@ module.exports = {
         await fromField.setValue(from);
         const toField = await $(this.toField);
         await toField.setValue(to);
-       
+       // const carPickerworkflow = await $(this.carPickerworkflow);
+       // await carPickerworkflow.waitForDisplayed()
         
     },
     fillAddresses: async function(from, to) {

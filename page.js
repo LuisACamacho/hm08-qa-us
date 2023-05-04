@@ -7,11 +7,21 @@ module.exports = {
     // Buttons
     callATaxiButton: 'button=Call a taxi',
     phoneNumberButton: 'div*=Phone number',
+    supportiveButton: 'div*=Supportive',
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
     // Modals
     phoneNumberModal: '.modal',
+    carPickerworkflow: '.workflow-subcontainer',
     // Functions
+    fillAddressesOnly: async function(from, to) {
+        const fromField = await $(this.fromField);
+        await fromField.setValue(from);
+        const toField = await $(this.toField);
+        await toField.setValue(to);
+       
+        
+    },
     fillAddresses: async function(from, to) {
         const fromField = await $(this.fromField);
         await fromField.setValue(from);

@@ -8,6 +8,8 @@ module.exports = {
     callATaxiButton: 'button=Call a taxi',
     phoneNumberButton: 'div*=Phone number',
     supportiveButton: 'div*=Supportive',
+    paymentButton: '.pp-text',  
+    addcardButton: 'div*=Add card',
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
     // Modals
@@ -55,5 +57,15 @@ module.exports = {
         const code = await requests[0].response.body.code
         await codeField.setValue(code)
         await $(this.confirmButton).click()
+    },
+
+    fillPayment: async function() {
+        const paymentmethodButton = await $(this.paymentButton);
+        await paymentmethodButton.waitForDisplayed();
+        await paymentmethodButton.click();
+        const addcardButton = await $(this.addcardButton);
+        await addcardButton.waitForDisplayed();
+        await browser.pause(4000);
+        await addcardButton.click();
     },
 };

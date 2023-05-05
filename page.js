@@ -4,6 +4,7 @@ module.exports = {
     toField: '#to',
     phoneNumberField: '#phone',
     codeField: '#code',
+    cardField: '#number',
     // Buttons
     callATaxiButton: 'button=Call a taxi',
     phoneNumberButton: 'div*=Phone number',
@@ -59,7 +60,7 @@ module.exports = {
         await $(this.confirmButton).click()
     },
 
-    fillPayment: async function() {
+    fillPayment: async function(cardDetail) {
         const paymentmethodButton = await $(this.paymentButton);
         await paymentmethodButton.waitForDisplayed();
         await paymentmethodButton.click();
@@ -67,5 +68,7 @@ module.exports = {
         await addcardButton.waitForDisplayed();
         await browser.pause(4000);
         await addcardButton.click();
+        const cardField = await $(this.cardField);
+        await cardField.setValue(cardDetail);
     },
 };

@@ -36,7 +36,8 @@ describe('Ordering a taxi', () => {
         await browser.url(`/`)
         await browser.pause(4000);
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
-        await page.fillPayment();
+        const cardDetail = helper.getCreditCard();
+        await page.fillPayment(cardDetail);
         
        
         await browser.pause(8000);     

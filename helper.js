@@ -9,5 +9,11 @@ module.exports = {
     getCreditCard: function() {
         const number = Math.floor(100000000000 + Math.random() * 900000000000)
         return number
+    },
+    getCardCode: function() {
+        const number = Math.floor(Math.random() * 100)
+        return number
+   
+
     }
 };

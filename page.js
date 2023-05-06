@@ -18,7 +18,8 @@ module.exports = {
     confirmButton: 'button=Confirm',
     linkButton: 'button=Link',
     cardformtouch: '.pp-buttons',
-    blanketButton: '//div[Blanket and handerchiefs]  //span[@class="slider round"]',
+    blanketButton: '//span [@class = "slider round"]',
+   // blank2: '.slider.round',
     closeButton: '',
     //'//div[@class="section active unusuals"]//button[@class="close-button section-close"]'
     // Modals
@@ -100,7 +101,10 @@ module.exports = {
     },
     clickBlanket: async function() {
         const blanketButton = await $(this.blanketButton);
+       // const blanketButton2 = await $(this.blank2);
+        //await expect($('//div[contains(text(), "Blanket and handkerchief")]')).toBeExisting();
         await blanketButton.waitForDisplayed();
         await blanketButton.click();
+       // await blanketButton2.click();
     },
 };

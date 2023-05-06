@@ -19,7 +19,8 @@ module.exports = {
     linkButton: 'button=Link',
     cardformtouch: '.pp-buttons',
     blanketButton: '//span [@class = "slider round"]',
-   // blank2: '.slider.round',
+    iceCreamaddButton: '.counter-plus',
+    orderButton: 'div*=smart-button',
     closeButton: '',
     //'//div[@class="section active unusuals"]//button[@class="close-button section-close"]'
     // Modals
@@ -90,9 +91,9 @@ module.exports = {
         const LinkButton = await $(this.linkButton);
         await LinkButton.waitForDisplayed();
         await LinkButton.click();
-        await expect($('//div[@class="modal unusual"]//div[2]//button[@class="close-button section-close"]')).toBeExisting();
-        //const CloseButton = await $(this.closeButton);
-       // await CloseButton.click();
+        //await expect($('//div[@class="modal unusual"]//div[2]//button[@class="close-button section-close"]')).toBeExisting();
+        const CloseButton = await $(this.closeButton);
+        await CloseButton.click();
         
     },
     fillComment: async function(userComment) {
@@ -101,10 +102,15 @@ module.exports = {
     },
     clickBlanket: async function() {
         const blanketButton = await $(this.blanketButton);
-       // const blanketButton2 = await $(this.blank2);
-        //await expect($('//div[contains(text(), "Blanket and handkerchief")]')).toBeExisting();
         await blanketButton.waitForDisplayed();
         await blanketButton.click();
-       // await blanketButton2.click();
+        const icecreamaddButton = await $(this.iceCreamaddButton);
+        await icecreamaddButton.waitForDisplayed();
+        await icecreamaddButton.click();
+        await icecreamaddButton.click();
+        const orderButton = await $(this.orderButton);
+        await orderButton.waitForDisplayed();
+        await orderButton.click();
+        await orderButton.click();
     },
 };

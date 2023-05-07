@@ -21,7 +21,7 @@ module.exports = {
     blanketButton: '//span [@class = "slider round"]',
     iceCreamaddButton: '.counter-plus',
     orderButton: 'div*=smart-button',
-    closeButton: '',
+    closeButton: '//div[@class="section active"]//button[@class="close-button section-close"]',
     //'//div[@class="section active unusuals"]//button[@class="close-button section-close"]'
     // Modals
     phoneNumberModal: '.modal',

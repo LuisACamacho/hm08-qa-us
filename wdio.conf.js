@@ -28,7 +28,7 @@ exports.config = {
 ],
     logLevel: 'error',
     bail: 0,
-    baseUrl: 'https://9215b7b9-facc-48ec-8394-789250e1bddf.serverhub.practicum-services.com',
+    baseUrl: 'https://2139ff69-779d-43ce-b7b2-051e779a1890.serverhub.practicum-services.com',
     waitforTimeout: 20000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
@@ -41,6 +41,6 @@ exports.config = {
     reporters: ['spec'],
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000    //60000
+        timeout: 60000    
     },
 }

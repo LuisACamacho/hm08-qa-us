@@ -66,9 +66,9 @@ module.exports = {
         await $(this.nextButton).click();
         // we should wait for response
         // eslint-disable-next-line wdio/no-pause 
-        await browser.pause(2000);
+        
         const codeField = await $(this.codeField);
-        // collect all responses
+        await codeField.waitForDisplayed();
         const requests = await browser.getRequests();
         // use first response
         // add check that we have only one response
@@ -120,12 +120,9 @@ module.exports = {
         const orderButton = await $(this.orderButton);
         await orderButton.waitForDisplayed();
         await orderButton.click();
-        const driverinfoModel = await $(this.driverinfoModel); 
-       // await expect(driverinfoModel).toBeExisting();
-       //await driverinfoModel.waitForDisplayed({reverse: true}); 
         const carsearchModal = await $(this.carsearchModal);
         await expect(carsearchModal).toBeExisting();
-       // $(carsearchModal).waitUntil(await driverinfoModel.waitForDisplayed({reverse: false}), { timeout: 50000 });
+     
     },
 
 };

@@ -20,9 +20,8 @@ module.exports = {
     cardformtouch: '.pp-buttons',
     blanketButton: '//span [@class = "slider round"]',
     iceCreamaddButton: '.counter-plus',
-    orderButton: 'div*=smart-button',
-    closeButton: '//div[@class="section active"]//button[@class="close-button section-close"]',
-    //'//div[@class="section active unusuals"]//button[@class="close-button section-close"]'
+    orderButton: 'button.smart-button',
+    closeButton: 'div[class="payment-picker open"] button[class="close-button section-close"]',
     // Modals
     phoneNumberModal: '.modal',
     carPickerworkflow: '.workflow-subcontainer',
@@ -91,7 +90,6 @@ module.exports = {
         const LinkButton = await $(this.linkButton);
         await LinkButton.waitForDisplayed();
         await LinkButton.click();
-        //await expect($('//div[@class="modal unusual"]//div[2]//button[@class="close-button section-close"]')).toBeExisting();
         const CloseButton = await $(this.closeButton);
         await CloseButton.click();
         
@@ -110,7 +108,6 @@ module.exports = {
         await icecreamaddButton.click();
         const orderButton = await $(this.orderButton);
         await orderButton.waitForDisplayed();
-        await orderButton.click();
         await orderButton.click();
     },
 };

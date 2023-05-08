@@ -26,9 +26,7 @@ module.exports = {
     phoneNumberModal: '.modal',
     carPickerModal: '.workflow-subcontainer',
     carsearchModal: '.order-body',
-    driverinfoModel: '.order-number',
-    //time
-    //formdriverTime: ''
+   
     // Functions
     fillAddressesOnly: async function(from, to) {
         const fromField = await $(this.fromField);
@@ -66,7 +64,7 @@ module.exports = {
         await $(this.nextButton).click();
         // we should wait for response
         // eslint-disable-next-line wdio/no-pause 
-        
+        await browser.pause(2000);
         const codeField = await $(this.codeField);
         await codeField.waitForDisplayed();
         const requests = await browser.getRequests();

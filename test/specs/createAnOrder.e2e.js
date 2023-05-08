@@ -5,7 +5,6 @@ describe('Ordering a taxi', () => {
   
     it('Writing a message for the driver', async () => {
         await browser.url(`/`)
-        await browser.pause(4000);
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         const phoneNumber = helper.getPhoneNumber("+1");
         await page.submitPhoneNumber(phoneNumber);

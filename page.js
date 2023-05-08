@@ -24,15 +24,20 @@ module.exports = {
     closeButton: 'div[class="payment-picker open"] button[class="close-button section-close"]',
     // Modals
     phoneNumberModal: '.modal',
-    carPickerworkflow: '.workflow-subcontainer',
+    carPickerModal: '.workflow-subcontainer',
+    carsearchModal: '.order-body',
+    driverinfoModel: '.order-number',
+    //time
+    //formdriverTime: ''
     // Functions
     fillAddressesOnly: async function(from, to) {
         const fromField = await $(this.fromField);
         await fromField.setValue(from);
         const toField = await $(this.toField);
         await toField.setValue(to);
-       // const carPickerworkflow = await $(this.carPickerworkflow);
-       // await carPickerworkflow.waitForDisplayed()
+        const carPickerModal = await $(this.carPickerModal);
+        await expect(carPickerModal).toBeExisting();
+        
         
     },
     fillAddresses: async function(from, to) {
@@ -78,7 +83,6 @@ module.exports = {
         await paymentmethodButton.click();
         const addcardButton = await $(this.addcardButton);
         await addcardButton.waitForDisplayed();
-        await browser.pause(4000);
         await addcardButton.click();
         const cardField = await $(this.cardField);
         await cardField.setValue(creditCard);
@@ -102,12 +106,26 @@ module.exports = {
         const blanketButton = await $(this.blanketButton);
         await blanketButton.waitForDisplayed();
         await blanketButton.click();
+        
+        
+    },
+    orderIceCream: async function(){
         const icecreamaddButton = await $(this.iceCreamaddButton);
         await icecreamaddButton.waitForDisplayed();
         await icecreamaddButton.click();
         await icecreamaddButton.click();
+
+    },
+    orderTaxi: async function(){
         const orderButton = await $(this.orderButton);
         await orderButton.waitForDisplayed();
         await orderButton.click();
+        const driverinfoModel = await $(this.driverinfoModel); 
+       // await expect(driverinfoModel).toBeExisting();
+       //await driverinfoModel.waitForDisplayed({reverse: true}); 
+        const carsearchModal = await $(this.carsearchModal);
+        await expect(carsearchModal).toBeExisting();
+       // $(carsearchModal).waitUntil(await driverinfoModel.waitForDisplayed({reverse: false}), { timeout: 50000 });
     },
+
 };

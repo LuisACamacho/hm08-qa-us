@@ -94,7 +94,7 @@ module.exports = {
         await LinkButton.click();
         const CloseButton = await $(this.closeButton);
         await CloseButton.click();
-        await browser.pause(2000);
+        
         
     },
     fillComment: async function(userComment) {   //Step 5: Writing a message for the driver

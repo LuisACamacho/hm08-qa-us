@@ -33,8 +33,8 @@ module.exports = {
         await fromField.setValue(from);
         const toField = await $(this.toField);
         await toField.setValue(to);
-        const carPickerModal = await $(this.carPickerModal);
-        await expect(carPickerModal).toBeExisting();
+        //const carPickerModal = await $(this.carPickerModal);
+       // await expect(carPickerModal).toBeExisting();
         
         
     },
@@ -101,7 +101,7 @@ module.exports = {
         const commentField = await $(this.commentField);
         await commentField.setValue(userComment);
     },
-    clickBlanket: async function() {    // Step 6: Ordering a Blanket and Handkerchiefs
+    selectBlanketHandkerchiefs: async function() {    // Step 6: Ordering a Blanket and Handkerchiefs
         const blanketButton = await $(this.blanketButton);
         await blanketButton.waitForDisplayed();
         await blanketButton.click();

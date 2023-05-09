@@ -4,7 +4,7 @@ module.exports = {
         return `${countryCode}${number}`
     },
     getElementByText: async function(obj) {
-        return await $(`div=${obj.toString()}`);
+        return await $(`div=${obj.toString()}`);  
     },
     getCreditCard: function() {
         const number = Math.floor(100000000000 + Math.random() * 900000000000)

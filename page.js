@@ -28,7 +28,7 @@ module.exports = {
     carsearchModal: '.order-body',
    
     // Functions
-    fillAddressesOnly: async function(from, to) {
+    fillAddressesOnly: async function(from, to) {   // Step 1: setting the address
         const fromField = await $(this.fromField);
         await fromField.setValue(from);
         const toField = await $(this.toField);
@@ -38,7 +38,7 @@ module.exports = {
         
         
     },
-    fillAddresses: async function(from, to) {
+    fillAddresses: async function(from, to) {    //Step 2: Selectiing Supportive plan
         await this.fillAddressesOnly(from ,to);
         const callATaxiButton = await $(this.callATaxiButton);
         await callATaxiButton.waitForDisplayed();
@@ -47,7 +47,7 @@ module.exports = {
         await SupportiveButton.waitForDisplayed();
         await SupportiveButton.click();
     },
-    fillPhoneNumber: async function(phoneNumber) {
+    fillPhoneNumber: async function(phoneNumber) {  //Step 3: Filling in the phone number
         const phoneNumberButton = await $(this.phoneNumberButton);
         await phoneNumberButton.waitForDisplayed();
         await phoneNumberButton.click();
@@ -57,7 +57,7 @@ module.exports = {
         await phoneNumberField.waitForDisplayed();
         await phoneNumberField.setValue(phoneNumber);
     },
-    submitPhoneNumber: async function(phoneNumber) {
+    submitPhoneNumber: async function(phoneNumber) {  //Step 3: Filling in the phone number (Getting SMS code and submitting)
         await this.fillPhoneNumber(phoneNumber);
         // we are starting interception of request from the moment of method call
         await browser.setupInterceptor();
@@ -75,7 +75,7 @@ module.exports = {
         await $(this.confirmButton).click()
     },
 
-    fillPayment: async function(creditCard, cardCode) {
+    fillPayment: async function(creditCard, cardCode) { //Step 4. Adding a credit card
         const paymentmethodButton = await $(this.paymentButton);
         await paymentmethodButton.waitForDisplayed();
         await paymentmethodButton.click();
@@ -94,27 +94,28 @@ module.exports = {
         await LinkButton.click();
         const CloseButton = await $(this.closeButton);
         await CloseButton.click();
+        await browser.pause(2000);
         
     },
-    fillComment: async function(userComment) {
+    fillComment: async function(userComment) {   //Step 5: Writing a message for the driver
         const commentField = await $(this.commentField);
         await commentField.setValue(userComment);
     },
-    clickBlanket: async function() {
+    clickBlanket: async function() {    // Step 6: Ordering a Blanket and Handkerchiefs
         const blanketButton = await $(this.blanketButton);
         await blanketButton.waitForDisplayed();
         await blanketButton.click();
         
         
     },
-    orderIceCream: async function(){
+    orderIceCream: async function(){  //Step 7: Ordering 2 ice creams 
         const icecreamaddButton = await $(this.iceCreamaddButton);
         await icecreamaddButton.waitForDisplayed();
         await icecreamaddButton.click();
         await icecreamaddButton.click();
 
     },
-    orderTaxi: async function(){
+    orderTaxi: async function(){  //Step 8: The Car search modal appears
         const orderButton = await $(this.orderButton);
         await orderButton.waitForDisplayed();
         await orderButton.click();

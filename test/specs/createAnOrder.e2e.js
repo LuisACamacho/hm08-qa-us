@@ -66,9 +66,9 @@ describe('Order a taxi', () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         await page.SelectSupportivePlan();
-        await expect($('//div[@class="counter-value" and contains(text(),"2")]')).toBeExisting();  
         await page.orderIceCream(); 
-       
+        //Checking if the Ice Cream has been added twice in the UI 
+        await expect($('//div[@class="counter-value" and contains(text(),"2")]')).toBeExisting();  
         await browser.pause(2000);
     })
     // it('Should open car search modal ', async () => {

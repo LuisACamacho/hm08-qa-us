@@ -7,7 +7,6 @@ module.exports = {
     cardField: '#number',
     cardCodeField: '[name="code"]',
     commentField: '#comment',
-
     // Buttons
     callATaxiButton: 'button=Call a taxi',
     phoneNumberButton: 'div*=Phone number',
@@ -22,32 +21,38 @@ module.exports = {
     iceCreamaddButton: '.counter-plus',
     orderButton: 'button.smart-button',
     closeButton: 'div[class="payment-picker open"] button[class="close-button section-close"]',
+    //Active locators
+    supportiveButtonActive: 'div[class="tcard active"] button[data-for="tariff-card-4"]',
+    cardActive: 'input[id="card-1"]',
+    commentSaved: 'input[value="I am wearing a red shirt"]',
+    
     // Modals
     phoneNumberModal: '.modal',
-    carPickerModal: '.workflow-subcontainer',
+    carPickerModal: '.type-picker.shown',
     carsearchModal: '.order-body',
    
     // Functions
-    fillAddressesOnly: async function(from, to) {   // Step 1: setting the address
+    fillAddressesOnly: async function(from, to) {   //  setting the address
         const fromField = await $(this.fromField);
         await fromField.setValue(from);
         const toField = await $(this.toField);
         await toField.setValue(to);
-        //const carPickerModal = await $(this.carPickerModal);
-       // await expect(carPickerModal).toBeExisting();
         
         
     },
-    fillAddresses: async function(from, to) {    //Step 2: Selectiing Supportive plan
+    fillAddresses: async function(from, to) {    // Selecting taxi services
         await this.fillAddressesOnly(from ,to);
         const callATaxiButton = await $(this.callATaxiButton);
         await callATaxiButton.waitForDisplayed();
         await callATaxiButton.click();
+    },
+    SelectSupportivePlan: async function(from,to){ //Selecting Supportive plan option
         const SupportiveButton = await $(this.supportiveButton);
         await SupportiveButton.waitForDisplayed();
         await SupportiveButton.click();
+        
     },
-    fillPhoneNumber: async function(phoneNumber) {  //Step 3: Filling in the phone number
+    fillPhoneNumber: async function(phoneNumber) {  // Adding a phone number
         const phoneNumberButton = await $(this.phoneNumberButton);
         await phoneNumberButton.waitForDisplayed();
         await phoneNumberButton.click();
@@ -57,7 +62,7 @@ module.exports = {
         await phoneNumberField.waitForDisplayed();
         await phoneNumberField.setValue(phoneNumber);
     },
-    submitPhoneNumber: async function(phoneNumber) {  //Step 3: Filling in the phone number (Getting SMS code and submitting)
+    submitPhoneNumber: async function(phoneNumber) {  // getting SMS code to register the phone number
         await this.fillPhoneNumber(phoneNumber);
         // we are starting interception of request from the moment of method call
         await browser.setupInterceptor();
@@ -75,7 +80,7 @@ module.exports = {
         await $(this.confirmButton).click()
     },
 
-    fillPayment: async function(creditCard, cardCode) { //Step 4. Adding a credit card
+    fillPayment: async function(creditCard, cardCode) { // Adding a credit card for payment
         const paymentmethodButton = await $(this.paymentButton);
         await paymentmethodButton.waitForDisplayed();
         await paymentmethodButton.click();
@@ -97,25 +102,23 @@ module.exports = {
         
         
     },
-    fillComment: async function(userComment) {   //Step 5: Writing a message for the driver
+    fillComment: async function(userComment) {   // Writing a message for the driver
         const commentField = await $(this.commentField);
         await commentField.setValue(userComment);
     },
-    selectBlanketHandkerchiefs: async function() {    // Step 6: Ordering a Blanket and Handkerchiefs
+    selectBlanketHandkerchiefs: async function() {    //  Ordering a Blanket and Handkerchiefs
         const blanketButton = await $(this.blanketButton);
         await blanketButton.waitForDisplayed();
         await blanketButton.click();
-        
-        
     },
-    orderIceCream: async function(){  //Step 7: Ordering 2 ice creams 
+    orderIceCream: async function(){  //Ordering 2 ice creams 
         const icecreamaddButton = await $(this.iceCreamaddButton);
         await icecreamaddButton.waitForDisplayed();
         await icecreamaddButton.click();
         await icecreamaddButton.click();
 
     },
-    orderTaxi: async function(){  //Step 8: The Car search modal appears
+    orderTaxi: async function(){  //Displays the car search modal 
         const orderButton = await $(this.orderButton);
         await orderButton.waitForDisplayed();
         await orderButton.click();

@@ -131,8 +131,8 @@ module.exports = {
 
     },
     driverInfo: async function(){  //Displays the driver info 
-        const c = await $(this.orderTimer).getText(); //get the time text from the div 
-        var time = c;   // your input string
+        const c = await $(this.orderTimer).getText(); //get the estimated time of waiting from car search modal 
+        var time = c;   
         var a = time.split(':'); // split string at the colons
         var seconds = a[1];    //get only the part of the string that is in seconds   ex: 00:32
         const timer = 1000+parseInt(seconds)*1000; // convert string into int , than convert seconds to miliseconds 

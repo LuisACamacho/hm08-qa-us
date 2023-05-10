@@ -8,6 +8,8 @@
 # ------------------------------
 # 1.  Open the terminal 
 # 2.  Go to the project path                       ( Commnad: cd hm08-qa-us )
+# 3.  install dependencies in the project folder   ( Command: npm install   )  
+# 4.  set the test URL to wdio.conf.js file        (open file and add server URL to the baseURL: section) 
 # 3.  Run the WebdriverIO  command                 ( Command: npm run wdio  )
 
 

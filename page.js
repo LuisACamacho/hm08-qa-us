@@ -52,9 +52,9 @@ module.exports = {
         await callATaxiButton.click();
     },
     selectSupportivePlan: async function(){ //Selecting Supportive plan option
-        const SupportiveButton = await $(this.supportiveButton);
-        await SupportiveButton.waitForDisplayed();
-        await SupportiveButton.click();
+        const supportiveButton = await $(this.supportiveButton);
+        await supportiveButton.waitForDisplayed();
+        await supportiveButton.click();
         
     },
     fillPhoneNumber: async function(phoneNumber) {  // Adding a phone number
@@ -86,24 +86,24 @@ module.exports = {
     },
 
     fillPayment: async function(creditCard, cardCode) { // Adding a credit card for payment
-        const paymentmethodButton = await $(this.paymentButton);
-        await paymentmethodButton.waitForDisplayed();
-        await paymentmethodButton.click();
+        const paymentButton = await $(this.paymentButton);
+        await paymentButton.waitForDisplayed();
+        await paymentButton.click();
         const addCardButton = await $(this.addCardButton);
         await addCardButton.waitForDisplayed();
         await addCardButton.click();
         const cardField = await $(this.cardField);
         await cardField.setValue(creditCard);
-        const CardcodeField = await $(this.cardCodeField);
-        await CardcodeField.setValue(cardCode);
-        const cardform = await $(this.cardModal);
-        await cardform.waitForDisplayed();
-        await cardform.click();
-        const LinkButton = await $(this.linkButton);
-        await LinkButton.waitForDisplayed();
-        await LinkButton.click();
-        const CloseButton = await $(this.closeButton);
-        await CloseButton.click();
+        const cardCodeField = await $(this.cardCodeField);
+        await cardCodeField.setValue(cardCode);
+        const cardModal = await $(this.cardModal);
+        await cardModal.waitForDisplayed();
+        await cardModal.click();
+        const linkButton = await $(this.linkButton);
+        await linkButton.waitForDisplayed();
+        await linkButton.click();
+        const closeButton = await $(this.closeButton);
+        await closeButton.click();
         
         
     },

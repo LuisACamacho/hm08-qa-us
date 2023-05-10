@@ -51,7 +51,7 @@ module.exports = {
         await callATaxiButton.waitForDisplayed();
         await callATaxiButton.click();
     },
-    selectSupportivePlan: async function(from,to){ //Selecting Supportive plan option
+    selectSupportivePlan: async function(){ //Selecting Supportive plan option
         const SupportiveButton = await $(this.supportiveButton);
         await SupportiveButton.waitForDisplayed();
         await SupportiveButton.click();
@@ -127,7 +127,7 @@ module.exports = {
         const orderButton = await $(this.orderButton);
         await orderButton.waitForDisplayed();
         await orderButton.click();
-        await browser.pause(2000); 
+        
 
     },
     driverInfo: async function(){  //Displays the driver info 

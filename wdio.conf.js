@@ -13,22 +13,22 @@ exports.config = {
         maxInstances: 5,
         browserName: 'chrome',
         acceptInsecureCerts: true,
-        // 'goog:chromeOptions': {
-        //     args: ['headless', 'disable-gpu']
-        // }
+        'goog:chromeOptions': {
+            args: ['headless', 'disable-gpu']
+        }
     },
     {
         maxInstances: 5,
         browserName: 'firefox',
         acceptInsecureCerts: true,
-        // 'moz:firefoxOptions': {
-        //     args: ['-headless']
-        // }
+        'moz:firefoxOptions': {
+            args: ['-headless']
+        }
     }
 ],
     logLevel: 'error',
     bail: 0,
-    baseUrl: 'https://8dc54da4-a3e8-4eb1-9fa9-7c2d22450226.serverhub.practicum-services.com',
+    baseUrl: 'https://cc1fdade-bc07-43f6-b77f-a6f435a35374.serverhub.practicum-services.com',
     waitforTimeout: 20000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,

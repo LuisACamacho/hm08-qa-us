@@ -12,27 +12,32 @@ module.exports = {
     phoneNumberButton: 'div*=Phone number',
     supportiveButton: 'div*=Supportive',
     paymentButton: '.pp-text',  
-    addcardButton: 'div*=Add card',
+    addCardButton: 'div*=Add card',
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
     linkButton: 'button=Link',
-    cardformtouch: '.pp-buttons',
     blanketButton: '//span [@class = "slider round"]',
-    iceCreamaddButton: '.counter-plus',
+    iceCreamAddButton: '.counter-plus',
     orderButton: 'button.smart-button',
     closeButton: 'div[class="payment-picker open"] button[class="close-button section-close"]',
     //Active locators
     supportiveButtonActive: 'div[class="tcard active"] button[data-for="tariff-card-4"]',
     cardActive: 'input[id="card-1"]',
     commentSaved: 'input[value="I am wearing a red shirt"]',
+    icecreamAdded: '//div[@class="counter-value" and contains(text(),"2")]',
+    driverSelected: 'div[class="order-number"]',
+    orderTimer: 'div[class="order-header-time"]',
     
-    // Modals
+    // Modals 
     phoneNumberModal: '.modal',
+    carsearchModal: '.order.shown',
     carPickerModal: '.type-picker.shown',
-    carsearchModal: '.order-body',
+    cardModal: '.pp-buttons',
+
+    
    
     // Functions
-    fillAddressesOnly: async function(from, to) {   //  setting the address
+    fillAddresses: async function(from, to) {   //  setting the address
         const fromField = await $(this.fromField);
         await fromField.setValue(from);
         const toField = await $(this.toField);
@@ -40,13 +45,13 @@ module.exports = {
         
         
     },
-    fillAddresses: async function(from, to) {    // Selecting taxi services
-        await this.fillAddressesOnly(from ,to);
+    selectTaxi: async function(from, to) {    // Selecting taxi services
+        await this.fillAddresses(from ,to);
         const callATaxiButton = await $(this.callATaxiButton);
         await callATaxiButton.waitForDisplayed();
         await callATaxiButton.click();
     },
-    SelectSupportivePlan: async function(from,to){ //Selecting Supportive plan option
+    selectSupportivePlan: async function(from,to){ //Selecting Supportive plan option
         const SupportiveButton = await $(this.supportiveButton);
         await SupportiveButton.waitForDisplayed();
         await SupportiveButton.click();
@@ -84,14 +89,14 @@ module.exports = {
         const paymentmethodButton = await $(this.paymentButton);
         await paymentmethodButton.waitForDisplayed();
         await paymentmethodButton.click();
-        const addcardButton = await $(this.addcardButton);
-        await addcardButton.waitForDisplayed();
-        await addcardButton.click();
+        const addCardButton = await $(this.addCardButton);
+        await addCardButton.waitForDisplayed();
+        await addCardButton.click();
         const cardField = await $(this.cardField);
         await cardField.setValue(creditCard);
         const CardcodeField = await $(this.cardCodeField);
         await CardcodeField.setValue(cardCode);
-        const cardform = await $(this.cardformtouch);
+        const cardform = await $(this.cardModal);
         await cardform.waitForDisplayed();
         await cardform.click();
         const LinkButton = await $(this.linkButton);
@@ -112,19 +117,27 @@ module.exports = {
         await blanketButton.click();
     },
     orderIceCream: async function(){  //Ordering 2 ice creams 
-        const icecreamaddButton = await $(this.iceCreamaddButton);
-        await icecreamaddButton.waitForDisplayed();
-        await icecreamaddButton.click();
-        await icecreamaddButton.click();
+        const icecreamAddButton = await $(this.iceCreamAddButton);
+        await icecreamAddButton.waitForDisplayed();
+        await icecreamAddButton.click();
+        await icecreamAddButton.click();
 
     },
     orderTaxi: async function(){  //Displays the car search modal 
         const orderButton = await $(this.orderButton);
         await orderButton.waitForDisplayed();
         await orderButton.click();
-        const carsearchModal = await $(this.carsearchModal);
-        await expect(carsearchModal).toBeExisting();
-     
+        await browser.pause(2000); 
+
+    },
+    driverInfo: async function(){  //Displays the driver info 
+        const c = await $(this.orderTimer).getText(); //get the time text from the div 
+        var time = c;   // your input string
+        var a = time.split(':'); // split string at the colons
+        var seconds = a[1];    //get only the part of the string that is in seconds   ex: 00:32
+        const timer = 1000+parseInt(seconds)*1000; // convert string into int , than convert seconds to miliseconds 
+        const driverSelected = await $(this.driverSelected); 
+        await driverSelected.waitForDisplayed({timeout: timer}); // wait for time for driver info to be visible on the page
     },
 
 };
